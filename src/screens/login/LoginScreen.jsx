@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import AppLogo from "../../assets/icons/AppLogo";
@@ -41,7 +42,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.alignCenter}>
         <AppLogo width={221} height={144} />
         <Text style={styles.headerText}>Log In</Text>
@@ -80,7 +81,7 @@ const LoginScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({

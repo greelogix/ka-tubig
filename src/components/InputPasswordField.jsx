@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   alignIcon: {
     marginRight: 8,
     marginLeft: 10,
-    width: "7%",
+    width: "6%",
   },
 });
 export default InputPasswordfield;
