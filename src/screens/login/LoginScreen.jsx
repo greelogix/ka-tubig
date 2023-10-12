@@ -1,4 +1,10 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import React, { useState } from "react";
 import AppLogo from "../../assets/icons/AppLogo";
 import colors from "../../theme/colors";
@@ -7,6 +13,8 @@ import GradientButton from "../../components/GradientButton";
 import RememberAndForgotContainer from "./components/RememberAndForgotContainer";
 import UserAuthService from "../components/userAuthService";
 import FormTextInput from "../../components/FormTextInput";
+
+const { width } = Dimensions.get("window");
 
 const LoginScreen = () => {
   const { loading, registerForm, setRegisterForm, getUserLoginService } =
@@ -66,7 +74,7 @@ const LoginScreen = () => {
           />
         </View>
         <View style={[styles.alignInRow, styles.alignCenter]}>
-          <Text style={styles.accountText}>Don’t Have a Accounts?</Text>
+          <Text style={styles.accountText}>Don’t Have a Accounts</Text>
           <TouchableOpacity>
             <Text style={styles.registerText}>Register</Text>
           </TouchableOpacity>
@@ -81,7 +89,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   widthContainer: {
-    width: "70%",
+    width: width * 0.85,
   },
   alignCenter: {
     justifyContent: "center",

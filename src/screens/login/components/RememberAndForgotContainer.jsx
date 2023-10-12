@@ -8,7 +8,7 @@ const RememberAndForgotContainer = () => {
 
   return (
     <View style={styles.alignCheckbox}>
-      <View style={{ flexDirection: "row", alignItem: "center" }}>
+      <View style={styles.alignRow}>
         <Checkbox
           style={styles.checkbox}
           value={isChecked}
@@ -31,6 +31,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  alignRow: {
+    flexDirection: "row",
+    alignItem: "center",
   },
   alignForgotBtn: {
     alignItems: "flex-end",
