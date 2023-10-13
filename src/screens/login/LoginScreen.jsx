@@ -49,13 +49,14 @@ const LoginScreen = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
+      style={{ flex: 1, backgroundColor: colors.white }}
     >
-      <ScrollView>
-        <View style={styles.alignCenter}>
-          <AppLogo width={logoWidth} height={logoHeight} />
-          <Text style={styles.headerText}>Log In</Text>
-        </View>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        showsVerticalScrollIndicator={false}
+      >
+        <AppLogo width={logoWidth} height={logoHeight} />
+        <Text style={styles.headerText}>Log In</Text>
         <View style={styles.credentialsContainer}>
           <View style={styles.widthContainer}>
             <FormTextInput
@@ -97,8 +98,9 @@ const LoginScreen = () => {
 };
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: colors.white,
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   widthContainer: {
     width: width * 0.8,
