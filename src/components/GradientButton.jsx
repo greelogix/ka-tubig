@@ -4,10 +4,13 @@ import {
   TouchableOpacity,
   StyleSheet,
   ActivityIndicator,
+  Dimensions,
 } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import colors from "../theme/colors";
+
+const { height } = Dimensions.get("window");
 
 const GradientButton = ({
   colors = ["#5DBDE0", "#0484FF"],
@@ -40,7 +43,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonText: {
-    fontSize: 20,
+    fontSize: height * 0.02,
     fontWeight: "700",
     lineHeight: 34,
     textAlign: "center",

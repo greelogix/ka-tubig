@@ -4,10 +4,14 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import React, { useState } from "react";
 import colors from "../theme/colors";
 import HideIcon from "../assets/icons/HidePasswordIcon";
+
+const { height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const InputPasswordfield = ({
   headerText,
@@ -61,7 +65,7 @@ const styles = StyleSheet.create({
   text: {
     color: colors.darkGray,
     fontWeight: "700",
-    fontSize: 20,
+    fontSize: height * 0.02,
     lineHeight: 26,
   },
   textField: {
@@ -81,7 +85,7 @@ const styles = StyleSheet.create({
   alignIcon: {
     marginRight: 8,
     marginLeft: 10,
-    width: "6%",
+    width: width * 0.06,
   },
 });
 export default InputPasswordfield;

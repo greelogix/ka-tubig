@@ -4,6 +4,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
+  Platform,
+  KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
 import React, { useState } from "react";
@@ -16,6 +18,7 @@ import UserAuthService from "../components/userAuthService";
 import FormTextInput from "../../components/FormTextInput";
 
 const { width } = Dimensions.get("window");
+const { height } = Dimensions.get("window");
 
 const LoginScreen = () => {
   const { loading, registerForm, setRegisterForm, getUserLoginService } =
@@ -40,48 +43,56 @@ const LoginScreen = () => {
       getUserLoginService();
     }
   };
+  const logoHeight = height * 14.4;
+  const logoWidth = width * 22.1;
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.alignCenter}>
-        <AppLogo width={221} height={144} />
-        <Text style={styles.headerText}>Log In</Text>
-      </View>
-      <View style={styles.credentialsContainer}>
-        <View style={styles.widthContainer}>
-          <FormTextInput
-            headerText="Email"
-            placeHolderText={"Enter your Email"}
-            name={"email"}
-            setRegisterForm={setRegisterForm}
-            value={registerForm?.email}
-            registerForm={registerForm}
-            checkEmptyEmailField={checkEmptyEmailField}
-          />
-          <InputPasswordfield
-            headerText="Password"
-            placeHolderText="Enter your Password"
-            name={"password"}
-            setRegisterForm={setRegisterForm}
-            value={registerForm?.password}
-            registerForm={registerForm}
-            checkEmptyPasswordField={checkEmptyPasswordField}
-          />
-          <RememberAndForgotContainer />
-          <GradientButton
-            btnText="Log In"
-            onPress={handleLoginService}
-            loading={loading}
-          />
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+      <ScrollView>
+        <View style={styles.alignCenter}>
+          <AppLogo width={logoWidth} height={logoHeight} />
+          <Text style={styles.headerText}>Log In</Text>
         </View>
-        <View style={[styles.alignInRow, styles.alignCenter]}>
-          <Text style={styles.accountText}>Don’t Have a Accounts</Text>
-          <TouchableOpacity>
-            <Text style={styles.registerText}>Register</Text>
-          </TouchableOpacity>
+        <View style={styles.credentialsContainer}>
+          <View style={styles.widthContainer}>
+            <FormTextInput
+              headerText="Email"
+              placeHolderText={"Enter your Email"}
+              name={"email"}
+              setRegisterForm={setRegisterForm}
+              value={registerForm?.email}
+              registerForm={registerForm}
+              checkEmptyEmailField={checkEmptyEmailField}
+            />
+            <InputPasswordfield
+              headerText="Password"
+              placeHolderText="Enter your Password"
+              name={"password"}
+              setRegisterForm={setRegisterForm}
+              value={registerForm?.password}
+              registerForm={registerForm}
+              checkEmptyPasswordField={checkEmptyPasswordField}
+            />
+            <RememberAndForgotContainer />
+            <GradientButton
+              btnText="Log In"
+              onPress={handleLoginService}
+              loading={loading}
+            />
+          </View>
+          <View style={[styles.alignInRow, styles.alignCenter]}>
+            <Text style={styles.accountText}>Don’t Have a Accounts?</Text>
+            <TouchableOpacity style={{ marginLeft: 5 }}>
+              <Text style={styles.registerText}>Register</Text>
+              <View style={styles.registerDivider} />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 const styles = StyleSheet.create({
@@ -90,7 +101,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   widthContainer: {
-    width: width * 0.85,
+    width: width * 0.8,
   },
   alignCenter: {
     justifyContent: "center",
@@ -98,7 +109,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: colors.primary,
-    fontSize: 30,
+    fontSize: height * 0.03,
     fontWeight: "700",
     lineHeight: 27,
   },
@@ -112,14 +123,19 @@ const styles = StyleSheet.create({
   },
   accountText: {
     color: colors.gray,
-    fontSize: 20,
+    fontSize: height * 0.02,
     fontWeight: "400",
   },
   registerText: {
-    marginLeft: 5,
     color: colors.primary,
-    fontSize: 25,
+    fontSize: height * 0.02 + 6,
     fontWeight: "700",
+    lineHeight: 27,
+  },
+  registerDivider: {
+    borderBottomWidth: 1,
+    paddingHorizontal: 24,
+    borderColor: colors.primary,
   },
 });
 export default LoginScreen;

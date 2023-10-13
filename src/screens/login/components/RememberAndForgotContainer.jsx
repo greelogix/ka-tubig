@@ -1,10 +1,17 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import React, { useState } from "react";
 import Checkbox from "expo-checkbox";
 import colors from "../../../theme/colors";
 
+const { height } = Dimensions.get("window");
 const RememberAndForgotContainer = () => {
-  const [isChecked, setChecked] = useState(false);
+  const [isChecked, setChecked] = useState(true);
 
   return (
     <View style={styles.alignCheckbox}>
@@ -42,7 +49,7 @@ const styles = StyleSheet.create({
   },
   forgotText: {
     color: colors.primary,
-    fontSize: 20,
+    fontSize: height * 0.02,
     fontWeight: "700",
     lineHeight: 27,
   },
@@ -54,7 +61,7 @@ const styles = StyleSheet.create({
   rememberText: {
     marginLeft: 10,
     color: "#4D4C4C",
-    fontSize: 18,
+    fontSize: height * 0.018,
     fontWeight: "400",
     lineHeight: 20,
   },

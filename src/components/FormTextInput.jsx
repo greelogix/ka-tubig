@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet, TextInput, Dimensions } from "react-native";
 import React from "react";
 import colors from "../theme/colors";
 
+const { height } = Dimensions.get("window");
 const FormTextInput = ({
   headerText,
   placeHolderText,
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
   text: {
     color: colors.darkGray,
     fontWeight: "700",
-    fontSize: 20,
+    fontSize: height * 0.02,
     lineHeight: 26,
   },
   textField: {
